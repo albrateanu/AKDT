@@ -21,10 +21,3 @@ For training and testing, your directory structure should look like this
      `├──SIDD`   <br/>
           `├──ValidationNoisyBlocksSrgb.mat`   <br/>
           `└──ValidationGtBlocksSrgb.mat`   <br/>
-     `├──DND`   <br/>
-          `├──info.mat`   <br/>
-          `└──images_srgb`   <br/>
-               `├──0001.mat`   <br/>
-               `├──0002.mat`   <br/>
-               `├── ...    `   <br/>
-               `└──0050.mat` 
