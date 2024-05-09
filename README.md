@@ -39,7 +39,7 @@ WaterlooED - [Google Drive](https://drive.google.com/file/d/19_mCE_GXfmE5yYsm-HE
 gaussian_test - [Google Drive](https://drive.google.com/file/d/1mwMLt-niNqcQpfN_ZduG9j4k6P_ZkOl0/view?usp=sharing)
 
 ### 3. Test
-Pre-trained weights available at [Google Drive](). Place the pre-trained weights into the ```./Denoising/pretrained_models/```
+Pre-trained weights available at [Google Drive](https://drive.google.com/drive/folders/1n6hCeLXxJ2IDtSufdDB0dLo-gSLCHaRp?usp=sharing). Place the pre-trained weights into the ```./Denoising/pretrained_models/``` directory.
 
 - Real Image Denoising evaluation
 ```bash
@@ -57,7 +57,7 @@ python test_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50
 python evaluate_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50
 ```
 
-**Note**: ```--weights``` argument can be used if you desire to specify paths to different weights.
+**Note**: ```--weights``` argument can be used to specify paths to different weights.
 
 ### 4. Compute Complexity
 You can test the model complexity (FLOPS/MACs/Params) using the following command:
@@ -82,7 +82,7 @@ python generate_patches_sidd.py
 ./train.ps1 Denoising/Options/GaussianColorDenoising_Restormer.yml
 ```
 
-- Train SIDD on Real Image Denoising:
+- Train AKDT on Real Image Denoising:
 ```bash
 # Linux
 ./train.sh Denoising/Options/GaussianColorDenoising_Restormer.yml
