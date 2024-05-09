@@ -24,19 +24,19 @@ python setup.py develop --no_cuda_ext
 ### 2. Prepare Datasets
 Download the LOLv1 and LOLv2 datasets:
 
-SIDD_train - [Google Drive](https://drive.google.com/file/d/1vhJg75hIpYvsmryyaxdygAWeHuiY_HWu/view?usp=sharing)
+SIDD_train - [Google Drive](https://drive.google.com/file/d/1UHjWZzLPGweA9ZczmV8lFSRcIxqiOVJw/view?usp=sharing)
 
-SIDD_val - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2eP629PgvKqF2Tw/view?usp=sharing)
+SIDD_val - [Google Drive](https://drive.google.com/file/d/1Fw6Ey1R-nCHN9WEpxv0MnMqxij-ECQYJ/view?usp=sharing)
 
-SIDD_test - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2eP629PgvKqF2Tw/view?usp=sharing)
+SIDD_test - [Google Drive](https://drive.google.com/file/d/11vfqV-lqousZTuAit1Qkqghiv_taY0KZ/view?usp=sharing)
 
-BSD400 - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2eP629PgvKqF2Tw/view?usp=sharing)
+BSD400 - [Google Drive](https://drive.google.com/file/d/1idKFDkAHJGAFDn1OyXZxsTbOSBx9GS8N/view?usp=sharing)
 
-DIV2K - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2eP629PgvKqF2Tw/view?usp=sharing)
+DIV2K - [Google Drive](https://drive.google.com/file/d/13wLWWXvFkuYYVZMMAYiMVdSA7iVEf2fM/view?usp=sharing)
 
-WaterlooED - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2eP629PgvKqF2Tw/view?usp=sharing)
+WaterlooED - [Google Drive](https://drive.google.com/file/d/19_mCE_GXfmE5yYsm-HEzuZQqmwMjPpJr/view?usp=sharing)
 
-gaussian_test - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2eP629PgvKqF2Tw/view?usp=sharing)
+gaussian_test - [Google Drive](https://drive.google.com/file/d/1mwMLt-niNqcQpfN_ZduG9j4k6P_ZkOl0/view?usp=sharing)
 
 ### 3. Test
 Pre-trained weights available at [Google Drive](). Place the pre-trained weights into the ```./pretrained_models/```
@@ -56,6 +56,8 @@ python test_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50 --s
 # Compute PSNR
 python evaluate_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50
 ```
+
+**Note**: ```--weights``` argument should only be used if you desire to specify paths to different weights otehr than those placed in the ```./pretrained_models``` directory.
 
 ### 4. Compute Complexity
 You can test the model complexity (FLOPS/MACs/Params) using the following command:
