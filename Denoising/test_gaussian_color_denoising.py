@@ -51,7 +51,7 @@ for sigma_test in sigmas:
     print("Compute results for noise level",sigma_test)
     model_restoration = AKDT(**x['network_g'])
     if args.model_type == 'blind':
-        weights = args.weights#+'_blind.pth'
+        weights = args.weights+'.pth'
         pass
     else:
         weights = args.weights + '_sigma' + str(sigma_test) +'.pth'

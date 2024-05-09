@@ -22,7 +22,7 @@ python setup.py develop --no_cuda_ext
 ```
 
 ### 2. Prepare Datasets
-Download the LOLv1 and LOLv2 datasets:
+Download the datasets and place them as specified in the ```./Denoising/Datasets/README.md```
 
 SIDD_train - [Google Drive](https://drive.google.com/file/d/1UHjWZzLPGweA9ZczmV8lFSRcIxqiOVJw/view?usp=sharing)
 
@@ -39,12 +39,12 @@ WaterlooED - [Google Drive](https://drive.google.com/file/d/19_mCE_GXfmE5yYsm-HE
 gaussian_test - [Google Drive](https://drive.google.com/file/d/1mwMLt-niNqcQpfN_ZduG9j4k6P_ZkOl0/view?usp=sharing)
 
 ### 3. Test
-Pre-trained weights available at [Google Drive](). Place the pre-trained weights into the ```./pretrained_models/```
+Pre-trained weights available at [Google Drive](). Place the pre-trained weights into the ```./Denoising/pretrained_models/```
 
 - Real Image Denoising evaluation
 ```bash
 # To obtain denoised results
-python test_real_denoising_sidd.py --save_images --weights /path/to/weights.h5
+python test_real_denoising_sidd.py --save_images
 # Compute PSNR
 python eval_sidd.py
 ```
@@ -52,12 +52,12 @@ python eval_sidd.py
 - Color Gaussian Image Denoising evaluation
 ```bash
 # To obtain denoised results
-python test_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50 --save_images --weights /path/to/weights.h5
+python test_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50
 # Compute PSNR
 python evaluate_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50
 ```
 
-**Note**: ```--weights``` argument should only be used if you desire to specify paths to different weights otehr than those placed in the ```./pretrained_models``` directory.
+**Note**: ```--weights``` argument can be used if you desire to specify paths to different weights.
 
 ### 4. Compute Complexity
 You can test the model complexity (FLOPS/MACs/Params) using the following command:
