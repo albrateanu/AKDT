@@ -39,14 +39,22 @@ WaterlooED - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2e
 gaussian_test - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2eP629PgvKqF2Tw/view?usp=sharing)
 
 ### 3. Test
-Pre-trained weights
+Pre-trained weights available at [Google Drive](). Place the pre-trained weights into the ```./pretrained_models/```
 
-- SIDD evaluation
+- Real Image Denoising evaluation
 ```bash
 # To obtain denoised results
-python test_real_denoising_sidd.py --save_images
+python test_real_denoising_sidd.py --save_images --weights /path/to/weights.h5
 # Compute PSNR
 python eval_sidd.py
+```
+
+- Color Gaussian Image Denoising evaluation
+```bash
+# To obtain denoised results
+python test_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50 --save_images --weights /path/to/weights.h5
+# Compute PSNR
+python evaluate_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50
 ```
 
 ### 4. Compute Complexity
@@ -58,25 +66,27 @@ python ./basicsr/models/archs/macs.py
 ### 5. Train
 - Generate training image patches:
 ```bash
+# Gaussian color image denoising
 python generate_patches_dfwb.py 
-```
-
-- Train AKDT on color image denoising:
-```bash
-# Linux
-./train.sh Denoising/Options/GaussianColorDenoising_Restormer.yml
-# Windows
-./train.ps1 Denoising/Options/GaussianColorDenoising_Restormer.yml
-```
-
-- Train SIDD on real image denoising:
-```bash
-# Generate training image patches
+# Real image denoising
 python generate_patches_sidd.py 
+```
+
+- Train AKDT on Color Gaussian Image Denoising:
+```bash
 # Linux
 ./train.sh Denoising/Options/GaussianColorDenoising_Restormer.yml
 # Windows
 ./train.ps1 Denoising/Options/GaussianColorDenoising_Restormer.yml
 ```
+
+- Train SIDD on Real Image Denoising:
+```bash
+# Linux
+./train.sh Denoising/Options/GaussianColorDenoising_Restormer.yml
+# Windows
+./train.ps1 Denoising/Options/GaussianColorDenoising_Restormer.yml
+```
+
 
 ## Citation
