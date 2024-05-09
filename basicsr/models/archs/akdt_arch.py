@@ -9,7 +9,6 @@ from einops import rearrange
 
 
 
-##########################################################################
 ## Layer Norm
 
 def to_3d(x):
@@ -67,7 +66,6 @@ class LayerNorm(nn.Module):
 
 
 
-##########################################################################
 ## Gated Noise-Guided Feed-Forward Network (GNFN)
 class FeedForward(nn.Module):
     def __init__(self, dim, ffn_expansion_factor, bias):
@@ -81,7 +79,6 @@ class FeedForward(nn.Module):
 
     def forward(self, x):
         x = self.project_in(x)
-        # Apply LDR module here
         x = self.ldr(x)
         x1, x2 = x.chunk(2, dim=1)
         x = F.gelu(x1) * x2
@@ -91,7 +88,6 @@ class FeedForward(nn.Module):
 
 
 
-##########################################################################
 ## Noise-Guided Attention Block (NGAB)
 class Attention(nn.Module):
     def __init__(self, dim, num_heads, bias):
@@ -124,8 +120,7 @@ class Attention(nn.Module):
 
 
 
-
-##########################################################################
+# Transformer Block
 class TransformerBlock(nn.Module):
     def __init__(self, dim, num_heads, ffn_expansion_factor, bias, LayerNorm_type):
         super(TransformerBlock, self).__init__()
@@ -141,12 +136,9 @@ class TransformerBlock(nn.Module):
 
         x = x + self.ffn(self.norm2(x))
 
-
         return x
 
 
-
-##########################################################################
 ## Overlapped image patch embedding with 3x3 Conv
 class OverlapPatchEmbed(nn.Module):
     def __init__(self, in_c=3, embed_dim=48, bias=False):
@@ -161,8 +153,7 @@ class OverlapPatchEmbed(nn.Module):
 
 
 
-##########################################################################
-## Resizing modules
+## Up/Down Sampling
 class Downsample(nn.Module):
     def __init__(self, n_feat):
         super(Downsample, self).__init__()
@@ -183,7 +174,6 @@ class Upsample(nn.Module):
     def forward(self, x):
         return self.body(x)
 
-##########################################################################
 class AKDT(nn.Module):
     def __init__(self, 
         inp_channels=3, 
@@ -206,7 +196,7 @@ class AKDT(nn.Module):
         return tr_out
     
 
-##---------- Transformer -----------------------
+# Transformer 
 class Transformer(nn.Module):
     def __init__(self, 
         inp_channels=3, 
@@ -217,8 +207,8 @@ class Transformer(nn.Module):
         heads = [1,2,4, 4],
         ffn_expansion_factor = 2.66,
         bias = False,
-        LayerNorm_type = 'WithBias',   ## Other option 'BiasFree'
-        dual_pixel_task = False        ## True for dual-pixel defocus deblurring only. Also set inp_channels=6
+        LayerNorm_type = 'WithBias',  
+        dual_pixel_task = False       
     ):
 
         super(Transformer, self).__init__()
@@ -227,25 +217,25 @@ class Transformer(nn.Module):
 
         self.encoder_level1 = nn.Sequential(*[TransformerBlock(dim=dim, num_heads=heads[0], ffn_expansion_factor=ffn_expansion_factor, bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[0])])
         
-        self.down1_2 = Downsample(dim) ## From Level 1 to Level 2
+        self.down1_2 = Downsample(dim) 
         self.encoder_level2 = nn.Sequential(*[TransformerBlock(dim=int(dim*2**1), num_heads=heads[1], ffn_expansion_factor=ffn_expansion_factor, bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[1])])
         
-        self.down2_3 = Downsample(int(dim*2**1)) ## From Level 2 to Level 3
+        self.down2_3 = Downsample(int(dim*2**1)) 
         self.encoder_level3 = nn.Sequential(*[TransformerBlock(dim=int(dim*2**2), num_heads=heads[2], ffn_expansion_factor=ffn_expansion_factor, bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[2])])
 
-        self.down3_4 = Downsample(int(dim*2**2)) ## From Level 3 to Level 4
+        self.down3_4 = Downsample(int(dim*2**2)) 
         self.latent = nn.Sequential(*[TransformerBlock(dim=int(dim*2**3), num_heads=heads[3], ffn_expansion_factor=ffn_expansion_factor, bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[3])])
         
-        self.up4_3 = Upsample(int(dim*2**3)) ## From Level 4 to Level 3
+        self.up4_3 = Upsample(int(dim*2**3)) 
         self.reduce_chan_level3 = nn.Conv2d(int(dim*2**3), int(dim*2**2), kernel_size=1, bias=bias)
         self.decoder_level3 = nn.Sequential(*[TransformerBlock(dim=int(dim*2**2), num_heads=heads[2], ffn_expansion_factor=ffn_expansion_factor, bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[2])])
 
 
-        self.up3_2 = Upsample(int(dim*2**2)) ## From Level 3 to Level 2
+        self.up3_2 = Upsample(int(dim*2**2)) 
         self.reduce_chan_level2 = nn.Conv2d(int(dim*2**2), int(dim*2**1), kernel_size=1, bias=bias)
         self.decoder_level2 = nn.Sequential(*[TransformerBlock(dim=int(dim*2**1), num_heads=heads[1], ffn_expansion_factor=ffn_expansion_factor, bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[1])])
         
-        self.up2_1 = Upsample(int(dim*2**1))  ## From Level 2 to Level 1  (NO 1x1 conv to reduce channels)
+        self.up2_1 = Upsample(int(dim*2**1)) 
 
         self.decoder_level1 = nn.Sequential(*[TransformerBlock(dim=int(dim*2**1), num_heads=heads[0], ffn_expansion_factor=ffn_expansion_factor, bias=bias, LayerNorm_type=LayerNorm_type) for i in range(num_blocks[0])])
         
@@ -286,9 +276,6 @@ class Transformer(nn.Module):
 
 
         return out_dec_level1
-# ==================================================================================================================
-# ================================================ PyTorch DD-Net ==================================================
-# ==================================================================================================================
 
 class LDR(nn.Module):
     def __init__(self,
