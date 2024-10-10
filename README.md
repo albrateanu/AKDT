@@ -76,18 +76,12 @@ python generate_patches_sidd.py
 
 - Train AKDT on Color Gaussian Image Denoising:
 ```bash
-# Linux
 ./train.sh Denoising/Options/GaussianColorDenoising_AKDT.yml
-# Windows
-./train.ps1 Denoising/Options/GaussianColorDenoising_AKDT.yml
 ```
 
 - Train AKDT on Real Image Denoising:
 ```bash
-# Linux
 ./train.sh Denoising/Options/GaussianColorDenoising_AKDT.yml
-# Windows
-./train.ps1 Denoising/Options/GaussianColorDenoising_AKDT.yml
 ```
 
 
