@@ -1,7 +1,7 @@
 # AKDT: Adaptive Kernel Dilation Transformer for Effective Image Denoising
 
 ## Updates
-
+- `04.12.2024` Paper has been accepted at VISAPP 2025.
 ## Experiment
 
 ### 1. Create Environment
