@@ -88,7 +88,7 @@ python generate_patches_sidd.py
 ## Citation
 ```
 @inproceedings{akdt,
-  title={Mask-guided Spectral-wise Transformer for Efficient Hyperspectral Image Reconstruction},
+  title={AKDT: Adaptive Kernel Dilation Transformer for Effective Image Denoising},
   author={Brateanu, Alexandru and Balmez, Raul and Avram, Adrian and Orhei, Ciprian},
   booktitle={VISAPP},
   year={2025}
