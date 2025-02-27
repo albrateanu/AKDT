@@ -102,9 +102,19 @@ python generate_patches_sidd.py
 ## Citation
 ```
 @inproceedings{akdt,
+  author    = {Alexandru Brateanu and Raul Balmez and Adrian Avram and Ciprian Orhei},
+  title     = {AKDT: Adaptive Kernel Dilation Transformer for Effective Image Denoising},
+  booktitle = {Proceedings of the 20th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 3: VISAPP},
+  year      = {2025},
+  pages     = {418--425},
+  isbn      = {978-989-758-728-3},
+  issn      = {2184-4321}
+}
+
+@inproceedings{akdt,
   title={AKDT: Adaptive Kernel Dilation Transformer for Effective Image Denoising},
   author={Brateanu, Alexandru and Balmez, Raul and Avram, Adrian and Orhei, Ciprian},
   booktitle={VISAPP},
   year={2025}
-}
+
 ```
