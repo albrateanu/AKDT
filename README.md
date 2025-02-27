@@ -111,10 +111,4 @@ python generate_patches_sidd.py
   issn      = {2184-4321}
 }
 
-@inproceedings{akdt,
-  title={AKDT: Adaptive Kernel Dilation Transformer for Effective Image Denoising},
-  author={Brateanu, Alexandru and Balmez, Raul and Avram, Adrian and Orhei, Ciprian},
-  booktitle={VISAPP},
-  year={2025}
-
 ```
