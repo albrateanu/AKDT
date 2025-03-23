@@ -1,5 +1,7 @@
 # AKDT: Adaptive Kernel Dilation Transformer for Effective Image Denoising
 
+[![arXiv](https://img.shields.io/badge/Paper-PDF-179bd3)](https://www.scitepress.org/Papers/2025/131577/131577.pdf)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/color-image-denoising-on-cbsd68-sigma15)](https://paperswithcode.com/sota/color-image-denoising-on-cbsd68-sigma15?p=akdt-adaptive-kernel-dilation-transformer-for)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/color-image-denoising-on-cbsd68-sigma25)](https://paperswithcode.com/sota/color-image-denoising-on-cbsd68-sigma25?p=akdt-adaptive-kernel-dilation-transformer-for)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/color-image-denoising-on-mcmaster-sigma15)](https://paperswithcode.com/sota/color-image-denoising-on-mcmaster-sigma15?p=akdt-adaptive-kernel-dilation-transformer-for)
@@ -15,6 +17,7 @@
 
 
 ## Updates
+- `23.03.2025` Repository updated with link to paper PDF.
 - `04.12.2024` Paper has been accepted at VISAPP 2025. To be published.
 ## Experiment
 
