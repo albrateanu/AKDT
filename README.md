@@ -4,6 +4,7 @@
 
 [![arXiv](https://img.shields.io/badge/Paper-PDF-179bd3)](https://www.scitepress.org/Papers/2025/131577/131577.pdf)
 
+<!---
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/color-image-denoising-on-cbsd68-sigma15)](https://paperswithcode.com/sota/color-image-denoising-on-cbsd68-sigma15?p=akdt-adaptive-kernel-dilation-transformer-for)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/color-image-denoising-on-cbsd68-sigma25)](https://paperswithcode.com/sota/color-image-denoising-on-cbsd68-sigma25?p=akdt-adaptive-kernel-dilation-transformer-for)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/color-image-denoising-on-mcmaster-sigma15)](https://paperswithcode.com/sota/color-image-denoising-on-mcmaster-sigma15?p=akdt-adaptive-kernel-dilation-transformer-for)
@@ -16,16 +17,19 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/color-image-denoising-on-cbsd68-sigma50)](https://paperswithcode.com/sota/color-image-denoising-on-cbsd68-sigma50?p=akdt-adaptive-kernel-dilation-transformer-for)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/color-image-denoising-on-urban100-sigma50)](https://paperswithcode.com/sota/color-image-denoising-on-urban100-sigma50?p=akdt-adaptive-kernel-dilation-transformer-for)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/akdt-adaptive-kernel-dilation-transformer-for/image-denoising-on-sidd)](https://paperswithcode.com/sota/image-denoising-on-sidd?p=akdt-adaptive-kernel-dilation-transformer-for)
+--->
 
 </div>
 
-## Updates
-- `20.04.2025` We use AKDT to participate in the **CVPR Workshop NTIRE 2025 Image Denoising Challenge**. Check out the [Challenge Report](https://arxiv.org/abs/2504.12276).
-- `23.03.2025` Repository updated with link to paper PDF.
-- `04.12.2024` Paper has been accepted at VISAPP 2025. To be published.
-## Experiment
 
-### 1. Create Environment
+## 🆕 Updates
+- `20.04.2025` 🏆 We use AKDT to participate in the **CVPR Workshop NTIRE 2025 Image Denoising Challenge**. Check out the [Challenge Report](https://arxiv.org/abs/2504.12276).
+- `23.03.2025` 🔗 Repository updated with link to paper PDF.
+- `04.12.2024` 🎉 Paper has been accepted at VISAPP 2025. To be published.
+  
+## 🧪 Experiment
+
+### ⚙️ 1. Create Environment
 - Make Conda Environment
 ```bash
 conda create -n AKDT python=3.7
@@ -42,7 +46,7 @@ pip install einops gdown addict future lmdb numpy pyyaml requests scipy tb-night
 python setup.py develop --no_cuda_ext
 ```
 
-### 2. Prepare Datasets
+### 📁 2. Prepare Datasets
 Download the datasets and place them as specified in the ```./Denoising/Datasets/README.md```
 
 SIDD_train - [Google Drive](https://drive.google.com/file/d/1UHjWZzLPGweA9ZczmV8lFSRcIxqiOVJw/view?usp=sharing)
@@ -59,7 +63,7 @@ WaterlooED - [Google Drive](https://drive.google.com/file/d/19_mCE_GXfmE5yYsm-HE
 
 gaussian_test - [Google Drive](https://drive.google.com/file/d/1mwMLt-niNqcQpfN_ZduG9j4k6P_ZkOl0/view?usp=sharing)
 
-### 3. Test
+### 🧫 3. Test
 Pre-trained weights available at [Google Drive](https://drive.google.com/drive/folders/1n6hCeLXxJ2IDtSufdDB0dLo-gSLCHaRp?usp=sharing). Place the pre-trained weights into the ```./Denoising/pretrained_models/``` directory.
 
 - Real Image Denoising evaluation
@@ -80,13 +84,13 @@ python evaluate_gaussian_color_denoising.py --model_type blind --sigmas 15,25,50
 
 **Note**: ```--weights``` argument can be used to specify paths to different weights.
 
-### 4. Compute Complexity
+### 📉 4. Compute Complexity
 You can test the model complexity (FLOPS/MACs/Params) using the following command:
 ```bash
 python ./basicsr/models/archs/macs.py
 ```
 
-### 5. Train
+### 🏋️ 5. Train
 - Generate training image patches:
 ```bash
 # Gaussian color image denoising
@@ -106,7 +110,7 @@ python generate_patches_sidd.py
 ```
 
 
-## Citation
+## 📚 Citation
 ```
 @inproceedings{brateanu2025akdt,
   author    = {Alexandru Brateanu and Raul Balmez and Adrian Avram and Ciprian Orhei},
