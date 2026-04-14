@@ -23,6 +23,7 @@
 
 
 ## 🆕 Updates
+- `14.04.2026` 📢🥳 Check out our new **CVPR 2026** paper: **Multinex: Lightweight Low-light Image Enhancement via Multi-prior Retinex**: 📄[Project Page](https://albrateanu.github.io/multinex/),  📎[Paper](https://arxiv.org/abs/2604.10359), ⭐[Code](https://github.com/albrateanu/Multinex).
 - `28.07.2025` ✨ Check out our new multimodal framework: [**ModalFormer: Multimodal Transformer for Low-Light Image Enhancement**](https://github.com/albrateanu/ModalFormer)! Paper and HF Demo coming soon!
 - `20.04.2025` 🏆 We use AKDT to participate in the **CVPR Workshop NTIRE 2025 Image Denoising Challenge**. Check out the [Challenge Report](https://arxiv.org/abs/2504.12276).
 - `23.03.2025` 🔗 Repository updated with link to paper PDF.
